@@ -1,0 +1,37 @@
+.Toolnav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menuName{
+    display: flex;
+
+}
+
+.menuName .MuiTypography-root {
+    padding: 5px;
+}
+
+.searchContainer {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    padding: 0 10px;
+}
+
+.searchIcon {
+    padding-right: 10px;
+}
+
+.inputRoot {
+    color: inherit;
+    width: 100%;
+}
