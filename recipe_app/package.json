@@ -16,10 +16,12 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
+    "recipe_app": "file:",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "json-server": "json-server --watch db.json --port 8888",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

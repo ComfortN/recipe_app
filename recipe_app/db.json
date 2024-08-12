@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "user@example.com",
+      "password": "password123"
+    },
+    {
+      "id": "bb98",
+      "name": "sbahle ngwenya",
+      "email": "check@gmail.com",
+      "password": "phumzile",
+      "recipes": []
+    }
+  ],
+  "recipes": [
+    {
+      "id": "1",
+      "name": "Spaghetti Carbonara",
+      "ingredients": [
+        "Spaghetti",
+        "Eggs",
+        "Cheese",
+        "Bacon"
+      ],
+      "instructions": "Cook spaghetti. Mix eggs and cheese. Fry bacon. Combine all.",
+      "category": "Main Course",
+      "preparationTime": "10 minutes",
+      "cookingTime": "15 minutes",
+      "servings": 4
+    }
+  ]
+}
