@@ -28,6 +28,59 @@
       "preparationTime": "10 minutes",
       "cookingTime": "15 minutes",
       "servings": 4
+    },
+    {
+      "id": "345a",
+      "name": "Gammon",
+      "ingredients": "2½ kg boneless unsmoked gammon joint, tied\n1 sprig thyme 2 bay leaves and 1 rosemary sprig tied together\n1 onion, halved\n2 carrots, roughly chopped\n1 celery stick, roughly chopped \n1 tbsp black peppercorns\n1 tsp cloves\n\nFor the glaze\n1½ tbsp English mustard\n70g clear honey\n2 tbsp soft dark brown sugar",
+      "instructions": "STEP 1\n\nPut the gammon in a large, deep saucepan. Add the tied herbs, onion, carrots, celery, peppercorns and cloves. Pour over enough cold water to cover the meat, then bring to the boil, cover with a lid, and lower to a gentle simmer for 1 hr 15 mins. Turn off the heat and leave the ham to sit in the liquid for 30 mins.\n\nSTEP 2\n\nRemove from the liquid (this makes a delicious soup stock) and leave to cool until cold enough to handle. Peel off the thick layer of skin on the gammon to reveal a layer of fat. Discard the skin and score the fat in a criss-cross pattern with a sharp knife\n\nSTEP 3\n\nHeat the oven to 200C/180C fan/gas 6. Put the ham in a roasting tray lined with foil. Mix together the mustard, honey and sugar in a bowl, then generously brush half over the ham. Roast for 15 mins, then brush with the remaining glaze. Return to the oven for a further 20-30 mins or until sticky and brown. Leave to cool for 15 mins before carving into thick slices",
+      "category": "Main Course",
+      "preparationTime": "15",
+      "cookingTime": "125",
+      "servings": "7"
+    },
+    {
+      "id": "5da2",
+      "name": "Gammon",
+      "ingredients": "onion\ncarrot",
+      "instructions": "STEP 1\\n\\nPut the gammon in a large, deep saucepan. Add the tied herbs, onion, carrots, celery, peppercorns and cloves. Pour over enough cold water to cover the meat, then bring to the boil, cover with a lid, and lower to a gentle simmer for 1 hr 15 mins. Turn off the heat and leave the ham to sit in the liquid for 30 mins.\\n\\nSTEP 2\\n\\nRemove from the liquid (this makes a delicious soup stock) and leave to cool until cold enough to handle. Peel off the thick layer of skin on the gammon to reveal a layer of fat. Discard the skin and score the fat in a criss-cross pattern with a sharp knife\\n\\nSTEP 3\\n\\nHeat the oven to 200C/180C fan/gas 6. Put the ham in a roasting tray lined with foil. Mix together the mustard, honey and sugar in a bowl, then generously brush half over the ham. Roast for 15 mins, then brush with the remaining glaze. Return to the oven for a further 20-30 mins or until sticky and brown. Leave to cool for 15 mins before carving into thick slices",
+      "category": "Main Course",
+      "preparationTime": "15",
+      "cookingTime": "125",
+      "servings": "7"
+    },
+    {
+      "id": "1792",
+      "name": "pork chops",
+      "ingredients": "2½ kg boneless unsmoked gammon joint, tied\\n1 sprig thyme 2 bay leaves and 1 rosemary sprig tied together\\n1 onion, halved\\n2 carrots, roughly chopped\\n1 celery stick, roughly chopped \\n1 tbsp black peppercorns\\n1 tsp cloves\\n\\nFor the glaze\\n1½ tbsp English mustard\\n70g clear honey\\n2 tbsp soft dark brown sugar",
+      "instructions": "STEP 1\\n\\nPut the gammon in a large, deep saucepan. Add the tied herbs, onion, carrots, celery, peppercorns and cloves. Pour over enough cold water to cover the meat, then bring to the boil, cover with a lid, and lower to a gentle simmer for 1 hr 15 mins. Turn off the heat and leave the ham to sit in the liquid for 30 mins.\\n\\nSTEP 2\\n\\nRemove from the liquid (this makes a delicious soup stock) and leave to cool until cold enough to handle. Peel off the thick layer of skin on the gammon to reveal a layer of fat. Discard the skin and score the fat in a criss-cross pattern with a sharp knife\\n\\nSTEP 3\\n\\nHeat the oven to 200C/180C fan/gas 6. Put the ham in a roasting tray lined with foil. Mix together the mustard, honey and sugar in a bowl, then generously brush half over the ham. Roast for 15 mins, then brush with the remaining glaze. Return to the oven for a further 20-30 mins or until sticky and brown. Leave to cool for 15 mins before carving into thick slices",
+      "category": "Main Course",
+      "preparationTime": "15",
+      "cookingTime": "125",
+      "servings": "7",
+      "image": {}
+    },
+    {
+      "id": "69b0",
+      "name": "chicken strips",
+      "ingredients": "chicken\nflour\nddf",
+      "instructions": "STEP 1\n\nPut the gammon in a large, deep saucepan. Add the tied herbs, onion, carrots, celery, peppercorns and cloves. Pour over enough cold water to cover the meat, then bring to the boil, cover with a lid, and lower to a gentle simmer for 1 hr 15 mins. Turn off the heat and leave the ham to sit in the liquid for 30 mins.\\\\n\\\\nSTEP 2\\\\n\\\\nRemove from the liquid (this makes a delicious soup stock) and leave to cool until cold enough to handle. Peel off the thick layer of skin on the gammon to reveal a layer of fat. Discard the skin and score the fat in a criss-cross pattern with a sharp knife\\\\n\\\\nSTEP 3\\\\n\\\\nHeat the oven to 200C/180C fan/gas 6. Put the ham in a roasting tray lined with foil. Mix together the mustard, honey and sugar in a bowl, then generously brush half over the ham. Roast for 15 mins, then brush with the remaining glaze. Return to the oven for a further 20-30 mins or until sticky and brown. Leave to cool for 15 mins before carving into thick slices",
+      "category": "Appetiser",
+      "preparationTime": "15",
+      "cookingTime": "90",
+      "servings": "5",
+      "image": {}
+    },
+    {
+      "id": "c37a",
+      "name": "soup",
+      "ingredients": "tomato onion",
+      "instructions": "blend everything together and",
+      "category": "Appetiser",
+      "preparationTime": "10",
+      "cookingTime": "59",
+      "servings": "4",
+      "image": "https://www.istockphoto.com/photo/baked-pork-cuts-roasted-sliced-loin-tenderloin-ham-piece-gm1440454265-480432758?utm_campaign=srp_photos_noresults&utm_content=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fgammon%2F&utm_medium=affiliate&utm_source=pexels&utm_term=gammon"
     }
   ]
 }

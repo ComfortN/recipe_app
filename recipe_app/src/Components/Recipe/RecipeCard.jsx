@@ -6,21 +6,30 @@ export default function RecipeCard({ recipe }) {
     const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/recipe/${recipe.idMeal}`);
+    navigate(`/recipe/${recipe.id}`);
   };
   return (
     <Card onClick={handleClick}>
         <CardActionArea>
-            <CardMedia
-                component="img"
-                height="140"
-                image={recipe.strMealThumb}
-                alt={recipe.strMeal}
-            />
+        {typeof recipe.image === 'string' && recipe.image ? (
+                    <CardMedia
+                        component="img"
+                        height="140"
+                        image={recipe.image}
+                        alt={recipe.name}
+                    />
+                ) : (
+                    <CardMedia
+                        component="img"
+                        height="140"
+                        image="path/to/placeholder/image.jpg"
+                        alt="No image available"
+                    />
+                )}
             <CardContent>
-                <Typography variant="h6">{recipe.strMeal}</Typography>
+                <Typography variant="h6">{recipe.name}</Typography>
                 <Typography variant="body2" color="textSecondary">
-                {recipe.strCategory}
+                {recipe.category}
                 </Typography>
             </CardContent>
       </CardActionArea>

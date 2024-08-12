@@ -10,61 +10,73 @@ export default function RecipeDetails() {
 
   useEffect(() => {
     const fetchRecipe = async () => {
-      try {
-        const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-        setRecipe(response.data.meals[0]);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching recipe details:', error);
-        setLoading(false);
-      }
+        try {
+            const response = await axios.get(`http://localhost:8888/recipes/${id}`);
+            console.log('JSON Server Response:', response.data); // Inspect response
+            setRecipe(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching recipe details:', error);
+            setLoading(false);
+        }
     };
 
     fetchRecipe();
-  }, [id]);
+}, [id]);
 
-  if (loading) {
+if (loading) {
     return <CircularProgress />;
-  }
+}
 
-  if (!recipe) {
+if (!recipe) {
     return <Typography variant="h6">Recipe not found.</Typography>;
-  }
+}
 
 
   return (
     <Container>
-      <Typography variant="h3" gutterBottom>
-        {recipe.strMeal}
-      </Typography>
-      <img src={recipe.strMealThumb} alt={recipe.strMeal} style={{ width: '50%', height: 'auto' }} />
-      <Typography variant="h5" gutterBottom>
-        Category: {recipe.strCategory}
-      </Typography>
-      <Typography variant="h5" gutterBottom>
-        Area: {recipe.strArea}
-      </Typography>
-      <Typography variant="h6" gutterBottom>
-        Instructions:
-      </Typography>
-      <Typography variant="body1" paragraph>
-        {recipe.strInstructions}
-      </Typography>
-      <Typography variant="h6" gutterBottom>
-        Ingredients:
-      </Typography>
-      <ul>
-        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => {
-          const ingredient = recipe[`strIngredient${num}`];
-          const measure = recipe[`strMeasure${num}`];
-          return ingredient ? (
-            <li key={num}>
-              {ingredient} - {measure}
-            </li>
-          ) : null;
-        })}
-      </ul>
-    </Container>
+            <Typography variant="h3" gutterBottom>
+                {recipe.name}
+            </Typography>
+            {typeof recipe.image === 'string' && recipe.image ? (
+                <img 
+                    src={recipe.image}
+                    alt={recipe.name}
+                    style={{ width: '50%', height: 'auto' }} 
+                />
+            ) : (
+                <img 
+                    src="path/to/placeholder/image.jpg"
+                    alt="No image available"
+                    style={{ width: '50%', height: 'auto' }} 
+                />
+            )}
+
+            <Typography variant="h5" gutterBottom>
+                Category: {recipe.category}
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+                Servings: {recipe.servings}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+                Instructions:
+            </Typography>
+            <Typography variant="body1" paragraph>
+                {recipe.instructions}
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+                Ingredients:
+            </Typography>
+            <ul>
+                {Array.isArray(recipe.ingredients) ? (
+                    recipe.ingredients.map((ingredient, index) => (
+                        <li key={index}>{ingredient}</li>
+                    ))
+                ) : (
+                    <li>No ingredients listed</li>
+                )}
+            </ul>
+        </Container>
   )
 }
 

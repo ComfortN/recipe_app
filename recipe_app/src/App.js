@@ -10,6 +10,7 @@ import RecipeDetails from './Components/Recipe/RecipeDetails';
 import Login from './Components/Login/Login';
 import Signup from './Components/SignUp/Signup';
 import Alerts from './Components/Alerts/Alerts';
+import AddRecipe from './Components/AddRecipe/AddRecipe';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -70,8 +71,10 @@ function App() {
             }
           />
           <Route path="/recipe/:id" element={<RecipeDetails />} />
+          
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/add-recipe" element={<AddRecipe />} />
         </Routes>
       </ThemeProvider>
     </Router>

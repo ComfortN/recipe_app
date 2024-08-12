@@ -45,7 +45,7 @@ export default function Navbar({ isAuthenticated, onLogout }) {
         </IconButton>
 
         
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
+        <Typography variant="h6" style={{ flexGrow: 1 }} onClick={() => navigate('/')} >
           RecipeApp
         </Typography>
 

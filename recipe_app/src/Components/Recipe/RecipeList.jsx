@@ -6,8 +6,10 @@ import RecipeCard from './RecipeCard';
 
 export default function RecipeList() {
     const [recipes, setRecipes] = useState([]);
+    const [myRecipes, setMyRecipes] = useState([])
     const [visibleRecipes, setVisibleRecipes] = useState(3);
 
+    //fetching from the API
     useEffect(() => {
         const fetchRecipes = async () => {
         try {
@@ -23,9 +25,26 @@ export default function RecipeList() {
     }, []);
 
 
+    // fetching from json-server
+    useEffect(() => {
+        const fetchMyRecipes = async () => {
+            try {
+                const response = await axios.get('http://localhost:8888/recipes');
+                setMyRecipes(response.data);
+                console.log(response)
+            } catch (error) {
+                console.error('Error fetching my recipes:', error);
+            }
+        };
+        fetchMyRecipes();
+    }, []);
+
+
     const handleShowMore = () => {
         setVisibleRecipes((prev) => prev + 3);
     };
+
+    const combinedRecipes = [...myRecipes, ...recipes];
 
     return (
         <Container>
@@ -33,14 +52,14 @@ export default function RecipeList() {
                     Recipes
                 </Typography>
         <Grid container spacing={4}>
-            {recipes.slice(0, visibleRecipes).map((recipe) => (
+            {combinedRecipes.slice(0, visibleRecipes).map((recipe) => (
             <Grid item xs={12} sm={6} md={4} key={recipe.idMeal}>
                 <RecipeCard recipe={recipe} />
             </Grid>
             ))}
         </Grid>
 
-        {visibleRecipes < recipes.length && (
+        {visibleRecipes < combinedRecipes.length && (
         <Button
           variant="contained"
           color="primary"
