@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AboutSection from './Components/About/AboutSection';
+import RecipeList from './Components/Recipe/RecipeList';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <CssBaseline />
       <Navbar />
       <AboutSection />
+      <RecipeList />
     </ThemeProvider>
 
   );
