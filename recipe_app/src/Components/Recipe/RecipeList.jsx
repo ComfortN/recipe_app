@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import { Container, Grid, Typography, Button } from '@mui/material';
 import RecipeCard from './RecipeCard';
+import './Recipe.css'
 
 
-export default function RecipeList() {
-    const [recipes, setRecipes] = useState([]);
+export default function RecipeList({ selectedCategory }) {
+    // const [recipes, setRecipes] = useState([]);
     const [myRecipes, setMyRecipes] = useState([])
     const [visibleRecipes, setVisibleRecipes] = useState(3);
+    const [searchTerm, setSearchTerm] = useState('');
 
     //fetching from the API
     // useEffect(() => {
@@ -44,28 +46,31 @@ export default function RecipeList() {
         setVisibleRecipes((prev) => prev + 3);
     };
 
-    const combinedRecipes = [...myRecipes, ...recipes];
+    // const combinedRecipes = [...myRecipes, ...recipes];
+
+    const filteredRecipes = selectedCategory === 'All' || selectedCategory === ''
+    ? myRecipes
+    : myRecipes.filter((recipe) => recipe.category === selectedCategory);
 
     return (
-        <Container>
+        <Container className="recipe-list-container">
             <Typography variant="h4" gutterBottom>
-                    Recipes
+            {selectedCategory ? `${selectedCategory} Recipes` : 'Recipes'}
                 </Typography>
         <Grid container spacing={2}>
-            {myRecipes.map((recipe) => (
+            {filteredRecipes.slice(0, visibleRecipes).map((recipe) => (
             <Grid item xs={12} sm={6} md={4} key={recipe.id}>
                 <RecipeCard recipe={recipe} />
             </Grid>
             ))}
         </Grid>
 
-        {visibleRecipes < combinedRecipes.length && (
+        {visibleRecipes < filteredRecipes.length && (
         <Button
           variant="contained"
           color="primary"
           onClick={handleShowMore}
-          style={{ marginTop: '20px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
-        >
+          className="show-more-button">
           More
         </Button>
         )}

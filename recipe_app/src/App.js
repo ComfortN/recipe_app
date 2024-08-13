@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
+import Sidebar from './Components/Sidebar/Sidebar';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AboutSection from './Components/About/AboutSection';
@@ -11,12 +12,17 @@ import Login from './Components/Login/Login';
 import Signup from './Components/SignUp/Signup';
 import Alerts from './Components/Alerts/Alerts';
 import AddRecipe from './Components/AddRecipe/AddRecipe';
+import Footer from './Components/Footer/Footer';
+import { IconButton } from '@mui/material';
+import Menu from '@mui/icons-material/Menu';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
   const [alertMessage, setAlertMessage] = useState('');
   const [alertType, setAlertType] = useState('success');
   const [alertVisible, setAlertVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
 
   const theme = createTheme({
@@ -47,6 +53,16 @@ function App() {
   };
 
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    setSidebarOpen(false);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+
   return (
     
 
@@ -54,7 +70,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
-        
+
+        <IconButton onClick={toggleSidebar} style={{ position: 'fixed', top: 16, left: 16 }}>
+          <Menu />
+        </IconButton>
+
+        <Sidebar open={sidebarOpen} onClose={toggleSidebar} onSelectCategory={handleCategorySelect} />
+
         <Alerts
           message={alertMessage} severity={alertType}
           visible={alertVisible} onClose={() => setAlertVisible(false)}
@@ -66,7 +88,7 @@ function App() {
             element={
               <>
                 <AboutSection />
-                <RecipeList />
+                <RecipeList selectedCategory={selectedCategory} />
               </>
             }
           />
@@ -76,6 +98,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/add-recipe" element={<AddRecipe />} />
         </Routes>
+
+        <Footer />
       </ThemeProvider>
     </Router>
 

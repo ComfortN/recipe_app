@@ -1,0 +1,10 @@
+.recipe-list-container {
+    padding-bottom: 40px;
+  }
+  
+  .show-more-button {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

@@ -5,7 +5,7 @@ import {RestaurantMenu, Fastfood, Cake, RamenDining,FreeBreakfast } from '@mui/i
 
 import React from 'react'
 
-export default function Sidebar({ open, onClose }) {
+export default function Sidebar({ open, onClose, onSelectCategory }) {
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
       <div className="sidebar">
@@ -15,29 +15,35 @@ export default function Sidebar({ open, onClose }) {
             <ListItemText primary="Categories" />
           </ListItem>
           <Divider />
-          <ListItem button>
+          <ListItem button onClick={() => onSelectCategory('Breakfast')}>
             <ListItemIcon>
               <FreeBreakfast />
             </ListItemIcon>
             <ListItemText primary="Breakfast" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={() => onSelectCategory('Lunch')}>
             <ListItemIcon>
               <Fastfood />
             </ListItemIcon>
             <ListItemText primary="Lunch" />
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={() => onSelectCategory('Dinner')}>
             <ListItemIcon>
               <RestaurantMenu />
             </ListItemIcon>
             <ListItemText primary="Dinner" />
           </ListItem>
+          <ListItem button onClick={() => onSelectCategory('Dessert')}>
+            <ListItemIcon>
+              <Cake />
+            </ListItemIcon>
+            <ListItemText primary="Dessert" />
+          </ListItem>
 
           <Divider />
 
           
-          <ListItem button>
+          <ListItem button onClick={() => onSelectCategory('All')}>
             <ListItemIcon>
               <RamenDining />
             </ListItemIcon>
