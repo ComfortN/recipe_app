@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import './Navbar.css'
-import { AppBar, Toolbar, Box, Typography, Button, IconButton, InputBase } from '@mui/material';
-import {Menu, Search, AccountCircleOutlined } from '@mui/icons-material';
+import { AppBar, Toolbar, Box, Typography, Button, IconButton, InputBase, Menu, MenuItem } from '@mui/material';
+import {Menu as MenuIcon, Search, AccountCircleOutlined } from '@mui/icons-material';
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
+import ProfileDialog from '../Profile/ProfileDialog';
 
 export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearchTerm }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [profileDialogOpen, setProfileDialogOpen] = useState(false);
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 
@@ -34,6 +37,25 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
     navigate('/');
   };
 
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleProfileOpen = () => {
+    setProfileDialogOpen(true);
+    handleMenuClose();
+  };
+
+  const handleProfileClose = () => {
+    setProfileDialogOpen(false);
+  };
+
+
   return (
     <>
     <AppBar position="static">
@@ -41,7 +63,7 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
         <Box className='menuName'>
             
         <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleSidebar}>
-          <Menu />
+          <MenuIcon />
         </IconButton>
 
         
@@ -69,10 +91,19 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
             {isAuthenticated ? (
               <>
                 <Button color="inherit" onClick={() => navigate('/add-recipe')}>Add Recipe</Button>
-                <IconButton color="inherit" onClick={() => navigate('/profile')}>
+                <IconButton color="inherit" onClick={handleMenuOpen}>
                   <AccountCircleOutlined />
                 </IconButton>
                 <Button color="inherit" onClick={handleLogout}>Logout</Button>
+              
+                <Menu
+                  anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+                  <MenuItem onClick={handleProfileOpen}>Profile</MenuItem>
+                  <MenuItem onClick={() => navigate('/my-recipes')}>My Recipes</MenuItem>
+                </Menu>
+              
               </>
             ) : (
               <>
@@ -88,6 +119,7 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
       </Toolbar>
     </AppBar>
     <Sidebar open={sidebarOpen} onClose={toggleSidebar} />
+    <ProfileDialog open={profileDialogOpen} onClose={handleProfileClose} />
     </>
     
   )

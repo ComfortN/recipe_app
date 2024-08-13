@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Typography, CircularProgress, Button, Grid } from '@mui/material';
-import { Delete, Edit} from '@mui/icons-material';
 import axios from 'axios';
 
 export default function RecipeDetails() {
@@ -68,7 +67,7 @@ if (!recipe) {
             ) : (
                 <img
                     src="path/to/placeholder/image.jpg"
-                    alt="No image available"
+                    alt=""
                     className="recipe-image"
                 />
             )}
