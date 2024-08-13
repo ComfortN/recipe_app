@@ -10,19 +10,19 @@ export default function RecipeList() {
     const [visibleRecipes, setVisibleRecipes] = useState(3);
 
     //fetching from the API
-    useEffect(() => {
-        const fetchRecipes = async () => {
-        try {
-            const response = await axios.get('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-            setRecipes(response.data.meals);
-            console.log(response)
-        } catch (error) {
-            console.error('Error fetching recipes:', error);
-        }
-        };
+    // useEffect(() => {
+    //     const fetchRecipes = async () => {
+    //     try {
+    //         const response = await axios.get('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+    //         setRecipes(response.data.meals);
+    //         console.log(response)
+    //     } catch (error) {
+    //         console.error('Error fetching recipes:', error);
+    //     }
+    //     };
 
-    fetchRecipes();
-    }, []);
+    // fetchRecipes();
+    // }, []);
 
 
     // fetching from json-server
@@ -51,9 +51,9 @@ export default function RecipeList() {
             <Typography variant="h4" gutterBottom>
                     Recipes
                 </Typography>
-        <Grid container spacing={4}>
-            {combinedRecipes.slice(0, visibleRecipes).map((recipe) => (
-            <Grid item xs={12} sm={6} md={4} key={recipe.idMeal}>
+        <Grid container spacing={2}>
+            {myRecipes.map((recipe) => (
+            <Grid item xs={12} sm={6} md={4} key={recipe.id}>
                 <RecipeCard recipe={recipe} />
             </Grid>
             ))}
