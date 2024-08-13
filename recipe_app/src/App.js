@@ -16,6 +16,7 @@ import Footer from './Components/Footer/Footer';
 import { IconButton } from '@mui/material';
 import Menu from '@mui/icons-material/Menu';
 
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
   const [alertMessage, setAlertMessage] = useState('');
@@ -23,6 +24,7 @@ function App() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
 
   const theme = createTheme({
@@ -69,14 +71,15 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+        <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout}
+          searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 
         <IconButton onClick={toggleSidebar} style={{ position: 'fixed', top: 16, left: 16 }}>
           <Menu />
         </IconButton>
-
-        <Sidebar open={sidebarOpen} onClose={toggleSidebar} onSelectCategory={handleCategorySelect} />
-
+        {sidebarOpen && handleCategorySelect && (
+          <Sidebar open={sidebarOpen} onClose={toggleSidebar} onSelectCategory={handleCategorySelect} />
+        )}
         <Alerts
           message={alertMessage} severity={alertType}
           visible={alertVisible} onClose={() => setAlertVisible(false)}
@@ -88,7 +91,7 @@ function App() {
             element={
               <>
                 <AboutSection />
-                <RecipeList selectedCategory={selectedCategory} />
+                <RecipeList selectedCategory={selectedCategory} searchTerm={searchTerm} />
               </>
             }
           />

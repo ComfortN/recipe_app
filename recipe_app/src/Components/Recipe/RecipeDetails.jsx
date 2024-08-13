@@ -55,50 +55,59 @@ if (!recipe) {
 
 
   return (
-    <Container>
-            <Typography variant="h3" gutterBottom>
+    <Container className="recipe-details-container">
+            <Typography variant="h3" gutterBottom className="recipe-title">
                 {recipe.name}
             </Typography>
             {typeof recipe.image === 'string' && recipe.image ? (
-                <img 
+                <img
                     src={recipe.image}
                     alt={recipe.name}
-                    style={{ width: '50%', height: 'auto' }} 
+                    className="recipe-image"
                 />
             ) : (
-                <img 
+                <img
                     src="path/to/placeholder/image.jpg"
                     alt="No image available"
-                    style={{ width: '50%', height: 'auto' }} 
+                    className="recipe-image"
                 />
             )}
 
-            <Typography variant="h5" gutterBottom>
+            
+            <Typography variant="h5" gutterBottom className="recipe-category">
                 Category: {recipe.category}
             </Typography>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom className="recipe-category">
+                Prep Time: {recipe.preparationTime} min
+            </Typography>
+            <Typography variant="h5" gutterBottom className="recipe-category">
+                Cook Time: {recipe.cookingTime} min
+            </Typography>
+            <Typography variant="h5" gutterBottom className="recipe-servings" >
                 Servings: {recipe.servings}
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom className="recipe-section-title">
                 Instructions:
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" paragraph className="recipe-instructions">
                 {recipe.instructions}
             </Typography>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom className="recipe-section-title">
                 Ingredients:
             </Typography>
-            <ul>
-                {Array.isArray(recipe.ingredients) ? (
-                    recipe.ingredients.map((ingredient, index) => (
-                        <li key={index}>{ingredient}</li>
-                    ))
-                ) : (
-                    <li>No ingredients listed</li>
-                )}
-            </ul>
+            <div className="recipe-ingredients">
+                <ul>
+                    {Array.isArray(recipe.ingredients) ? (
+                        recipe.ingredients.map((ingredient, index) => (
+                            <li key={index}>{ingredient}</li>
+                        ))
+                    ) : (
+                        <li>No ingredients listed</li>
+                    )}
+                </ul>
+            </div>
             {isLoggedIn && (
-                <Grid container spacing={2} style={{ marginTop: '16px' }}>
+                <Grid container spacing={2} className="recipe-buttons">
                     <Grid item>
                         <Button variant="contained" color="primary" onClick={handleEdit}>
                             Edit Recipe

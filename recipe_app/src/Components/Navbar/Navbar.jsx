@@ -5,7 +5,7 @@ import {Menu, Search, AccountCircleOutlined } from '@mui/icons-material';
 import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 
-export default function Navbar({ isAuthenticated, onLogout }) {
+export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearchTerm }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -59,7 +59,8 @@ export default function Navbar({ isAuthenticated, onLogout }) {
             <InputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-              className="inputRoot"
+              className="inputRoot" value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
         </Box>

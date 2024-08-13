@@ -5,11 +5,11 @@ import RecipeCard from './RecipeCard';
 import './Recipe.css'
 
 
-export default function RecipeList({ selectedCategory }) {
+export default function RecipeList({ selectedCategory, searchTerm  }) {
     // const [recipes, setRecipes] = useState([]);
     const [myRecipes, setMyRecipes] = useState([])
     const [visibleRecipes, setVisibleRecipes] = useState(3);
-    const [searchTerm, setSearchTerm] = useState('');
+    
 
     //fetching from the API
     // useEffect(() => {
@@ -48,9 +48,26 @@ export default function RecipeList({ selectedCategory }) {
 
     // const combinedRecipes = [...myRecipes, ...recipes];
 
-    const filteredRecipes = selectedCategory === 'All' || selectedCategory === ''
-    ? myRecipes
-    : myRecipes.filter((recipe) => recipe.category === selectedCategory);
+    // const filteredRecipes = selectedCategory === 'All' || selectedCategory === ''
+    // ? myRecipes
+    // : myRecipes.filter((recipe) => recipe.category === selectedCategory);
+
+
+    const filteredRecipes = myRecipes
+    .filter((recipe) => {
+      // Check if recipe properties are defined and convert to lowercase for comparison
+      const name = recipe.name ? recipe.name.toLowerCase() : '';
+      const description = recipe.description ? recipe.description.toLowerCase() : '';
+      const category = recipe.category ? recipe.category.toLowerCase() : '';
+      const searchTermLower = searchTerm.toLowerCase();
+
+      const matchesCategory =
+        selectedCategory === 'All' || selectedCategory === '' || recipe.category === selectedCategory;
+      const matchesSearchTerm =
+        name.includes(searchTermLower) || description.includes(searchTermLower) || category.includes(searchTermLower);
+
+      return matchesCategory && matchesSearchTerm;
+    });
 
     return (
         <Container className="recipe-list-container">
