@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Typography, CircularProgress, Button, Grid } from '@mui/material';
+import { Container, Typography, CircularProgress, Button,Box, Grid } from '@mui/material';
 import axios from 'axios';
+import './Recipe.css'
 
 export default function RecipeDetails() {
     const { id } = useParams();
@@ -55,25 +56,29 @@ if (!recipe) {
 
   return (
     <Container className="recipe-details-container">
+        
             <Typography variant="h3" gutterBottom className="recipe-title">
                 {recipe.name}
             </Typography>
-            {typeof recipe.image === 'string' && recipe.image ? (
-                <img
-                    src={recipe.image}
-                    alt={recipe.name}
-                    className="recipe-image"
-                />
-            ) : (
-                <img
-                    src="path/to/placeholder/image.jpg"
-                    alt=""
-                    className="recipe-image"
-                />
-            )}
+            <Box className='recipeDetails'>
+                <Box className='recipeImg'>
+                    {typeof recipe.image === 'string' && recipe.image ? (
+                    <img
+                        src={recipe.image}
+                        alt={recipe.name}
+                        className="recipe-image"
+                    />
+                ) : (
+                    <img
+                        src="path/to/placeholder/image.jpg"
+                        alt=""
+                        className="recipe-image"
+                    />
+                )}
+                </Box>
 
-            
-            <Typography variant="h5" gutterBottom className="recipe-category">
+                <Box className='details'>
+                <Typography variant="h5" gutterBottom className="recipe-category">
                 Category: {recipe.category}
             </Typography>
             <Typography variant="h5" gutterBottom className="recipe-category">
@@ -105,6 +110,13 @@ if (!recipe) {
                     )}
                 </ul>
             </div>
+                </Box>
+           
+
+            
+            
+        </Box>
+            
             {isLoggedIn && (
                 <Grid container spacing={2} className="recipe-buttons">
                     <Grid item>

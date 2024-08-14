@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import { Container, Typography, TextField, Button, Grid } from '@mui/material';
+import { Container, Typography, TextField, Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Alerts from '../Alerts/Alerts';
+import './Login.css'
 
 export default function Login({onLogin}) {
     const navigate = useNavigate();
@@ -61,7 +62,8 @@ export default function Login({onLogin}) {
 
 
     return (
-        <Container maxWidth="xs">
+        <Container maxWidth="xs" className='login'>
+            <Box className='loginForm'>
             <Alerts
             message={alertMessage}
             severity={alertType}
@@ -94,6 +96,8 @@ export default function Login({onLogin}) {
                 </Button>
             </Grid>
         </form>
+            </Box>
+            
     </Container>
     );
 }

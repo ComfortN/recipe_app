@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Alerts from '../Alerts/Alerts';
 
-const categories = ['Dessert', 'Main Course', 'Appetiser'];
+const categories = ['Dessert', 'Main Course', 'Appetiser','Dinner', 'Lunch', 'Breakfast'];
 
 export default function AddRecipe() {
     const location = useLocation();

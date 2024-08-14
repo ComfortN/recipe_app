@@ -3,12 +3,15 @@ import axios from 'axios';
 import { Container, Grid, Typography, Button } from '@mui/material';
 import RecipeCard from './RecipeCard';
 import './Recipe.css'
+import { useLocation } from 'react-router-dom';
 
 
 export default function RecipeList({ selectedCategory, searchTerm  }) {
     // const [recipes, setRecipes] = useState([]);
     const [myRecipes, setMyRecipes] = useState([])
     const [visibleRecipes, setVisibleRecipes] = useState(3);
+    const location = useLocation();
+    const userId = location.state?.userId || null;
     
 
     //fetching from the API
@@ -59,14 +62,16 @@ export default function RecipeList({ selectedCategory, searchTerm  }) {
       const name = recipe.name ? recipe.name.toLowerCase() : '';
       const description = recipe.description ? recipe.description.toLowerCase() : '';
       const category = recipe.category ? recipe.category.toLowerCase() : '';
-      const searchTermLower = searchTerm.toLowerCase();
+      const searchTermLower = searchTerm ? searchTerm.toLowerCase() : '';
 
       const matchesCategory =
         selectedCategory === 'All' || selectedCategory === '' || recipe.category === selectedCategory;
       const matchesSearchTerm =
         name.includes(searchTermLower) || description.includes(searchTermLower) || category.includes(searchTermLower);
+        
+        const matchesUser = !userId || recipe.userId === userId;
 
-      return matchesCategory && matchesSearchTerm;
+      return matchesCategory && matchesSearchTerm && matchesUser;
     });
 
     return (

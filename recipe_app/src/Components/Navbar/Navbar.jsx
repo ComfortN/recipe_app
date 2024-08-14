@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 import ProfileDialog from '../Profile/ProfileDialog';
 
-export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearchTerm }) {
+export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearchTerm, toggleSidebar }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,9 +25,9 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
   // }, []);
 
 
-  const toggleSidebar = () => {
-      setSidebarOpen(!sidebarOpen);
-  };
+  // const toggleSidebar = () => {
+  //     setSidebarOpen(!sidebarOpen);
+  // };
 
 
   const handleLogout = () => {
@@ -54,6 +54,17 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
   const handleProfileClose = () => {
     setProfileDialogOpen(false);
   };
+
+
+  const handleMyRecipes = () => {
+    const user = JSON.parse(localStorage.getItem('token'));
+    if (user && user.id) {
+        navigate('/my-recipes', { state: { userId: user.id } });
+    } else {
+        console.error('User ID not found.');
+    }
+    handleMenuClose();
+};
 
 
   return (
@@ -101,7 +112,7 @@ export default function Navbar({ isAuthenticated, onLogout, searchTerm, setSearc
                   onClose={handleMenuClose}
                 >
                   <MenuItem onClick={handleProfileOpen}>Profile</MenuItem>
-                  <MenuItem onClick={() => navigate('/my-recipes')}>My Recipes</MenuItem>
+                  <MenuItem onClick={handleMyRecipes}>My Recipes</MenuItem>
                 </Menu>
               
               </>

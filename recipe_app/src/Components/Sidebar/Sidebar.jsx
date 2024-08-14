@@ -33,6 +33,18 @@ export default function Sidebar({ open, onClose, onSelectCategory }) {
             </ListItemIcon>
             <ListItemText primary="Dinner" />
           </ListItem>
+          <ListItem button onClick={() => onSelectCategory('Appetiser')}>
+            <ListItemIcon>
+              <RestaurantMenu />
+            </ListItemIcon>
+            <ListItemText primary="Appetiser" />
+          </ListItem>
+          <ListItem button onClick={() => onSelectCategory('Main Course')}>
+            <ListItemIcon>
+              <RestaurantMenu />
+            </ListItemIcon>
+            <ListItemText primary="Main Course" />
+          </ListItem>
           <ListItem button onClick={() => onSelectCategory('Dessert')}>
             <ListItemIcon>
               <Cake />

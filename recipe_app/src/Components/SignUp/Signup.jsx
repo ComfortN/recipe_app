@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import { Container, Typography, TextField, Button, Grid } from '@mui/material';
+import { Container, Typography, TextField, Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Alerts from '../Alerts/Alerts'
+import './Signup.css'
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -72,44 +73,47 @@ export default function Signup() {
 
 
     return (
-    <Container maxWidth="xs">
-        <Alerts
-        message={alertMessage}
-        severity={alertType}
-        visible={alertVisible}
-        onClose={() => setAlertVisible(false)}
-      />
-      <Typography variant="h4" gutterBottom>
-        Sign Up
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField fullWidth label="Email" margin="normal" variant="outlined"
-            value={email} onChange={(e) => setEmail(e.target.value)}
-            error={Boolean(errors.email)} helperText={errors.email}
+    <Container maxWidth="xs" className='signup'>
+        <Box classname='signupForm' >
+            <Alerts
+            message={alertMessage}
+            severity={alertType}
+            visible={alertVisible}
+            onClose={() => setAlertVisible(false)}
         />
-        <TextField
-            name='name' type='text' label='Name' variant='outlined' fullWidth
-            margin="normal" onChange={(e) => setName(e.target.value)}
-            error={Boolean(errors.name)} helperText={errors.name}
-            />
-        <TextField fullWidth label="Password" type="password" margin="normal"
-            variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)}
-            error={Boolean(errors.password)} helperText={errors.password}
-        />
-        <TextField fullWidth label="Confirm Password" type="password"
-            margin="normal" variant="outlined" value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            error={Boolean(errors.confirmPassword)} helperText={errors.passwordMatch || errors.confirmPassword}
-        />
-        <Button type="submit" fullWidth variant="contained" color="primary">
+        <Typography variant="h4" gutterBottom>
             Sign Up
-        </Button>
-        <Grid container justifyContent="flex-end">
-            <Button color="primary" onClick={() => navigate('/login')}>
-            Already have an account? Login
+        </Typography>
+        <form onSubmit={handleSubmit}>
+            <TextField fullWidth label="Email" margin="normal" variant="outlined"
+                value={email} onChange={(e) => setEmail(e.target.value)}
+                error={Boolean(errors.email)} helperText={errors.email}
+            />
+            <TextField
+                name='name' type='text' label='Name' variant='outlined' fullWidth
+                margin="normal" onChange={(e) => setName(e.target.value)}
+                error={Boolean(errors.name)} helperText={errors.name}
+                />
+            <TextField fullWidth label="Password" type="password" margin="normal"
+                variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)}
+                error={Boolean(errors.password)} helperText={errors.password}
+            />
+            <TextField fullWidth label="Confirm Password" type="password"
+                margin="normal" variant="outlined" value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                error={Boolean(errors.confirmPassword)} helperText={errors.passwordMatch || errors.confirmPassword}
+            />
+            <Button type="submit" fullWidth variant="contained" color="primary">
+                Sign Up
             </Button>
-        </Grid>
-      </form>
+            <Grid container justifyContent="flex-end">
+                <Button color="primary" onClick={() => navigate('/login')}>
+                Already have an account? Login
+                </Button>
+            </Grid>
+        </form>
+            </Box>
+        
     </Container>
   )
 }

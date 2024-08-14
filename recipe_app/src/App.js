@@ -15,7 +15,8 @@ import AddRecipe from './Components/AddRecipe/AddRecipe';
 import Footer from './Components/Footer/Footer';
 import { IconButton } from '@mui/material';
 import Menu from '@mui/icons-material/Menu';
-
+import PrivacyPolicy from './Components/PrivacyPolicy/PrivacyPolicy';
+import TermsAndConditions from './Components/TermsAndConditions/TermsAndConditions';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -25,6 +26,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [termsOpen, setTermsOpen] = useState(false);
 
 
   const theme = createTheme({
@@ -65,44 +67,64 @@ function App() {
   };
 
 
+  const handleOpenTerms = () => {
+    setTermsOpen(true);
+  };
+
+  const handleCloseTerms = () => {
+    setTermsOpen(false);
+  };
+
+  const handleAcceptTerms = () => {
+    setTermsOpen(false);
+    
+  };
+
+
   return (
     
 
     <Router>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout}
-          searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+        <div className="App">
+            <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} toggleSidebar={toggleSidebar}
+            searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 
-        <IconButton onClick={toggleSidebar} style={{ position: 'fixed', top: 16, left: 16 }}>
-          <Menu />
-        </IconButton>
-        {sidebarOpen && handleCategorySelect && (
-          <Sidebar open={sidebarOpen} onClose={toggleSidebar} onSelectCategory={handleCategorySelect} />
-        )}
-        <Alerts
-          message={alertMessage} severity={alertType}
-          visible={alertVisible} onClose={() => setAlertVisible(false)}
-        />
-
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <AboutSection />
-                <RecipeList selectedCategory={selectedCategory} searchTerm={searchTerm} />
-              </>
-            }
-          />
-          <Route path="/recipe/:id" element={<RecipeDetails />} />
           
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/add-recipe" element={<AddRecipe />} />
-        </Routes>
+          {sidebarOpen &&  (
+            <Sidebar open={sidebarOpen} onClose={toggleSidebar} onSelectCategory={handleCategorySelect} />
+          )}
+          <Alerts
+            message={alertMessage} severity={alertType}
+            visible={alertVisible} onClose={() => setAlertVisible(false)}
+          />
 
-        <Footer />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <AboutSection />
+                  <RecipeList selectedCategory={selectedCategory} searchTerm={searchTerm} />
+                </>
+              }
+            />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
+            
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/add-recipe" element={<AddRecipe />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/my-recipes" element={<RecipeList />} />
+
+            
+          </Routes>
+
+          <Footer onOpenTerms={handleOpenTerms}/>
+          <TermsAndConditions open={termsOpen} onClose={handleCloseTerms} onAccept={handleAcceptTerms} />
+        </div>
+        
       </ThemeProvider>
     </Router>
 
