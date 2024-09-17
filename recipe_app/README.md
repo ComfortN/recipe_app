@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Online Recipe Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+The Online Recipe Application is a web-based platform built with ReactJS and JSON Server. It allows users to store, manage, and refer to their favorite dishes as recipes. Users can search, add, edit, and delete recipes, and the application is equipped with user authentication to protect user data.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Pages
 
-### `npm start`
+1. Login Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Users can log in with their credentials.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Registration Page
 
-### `npm test`
+* New users can register.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Home Page
 
-### `npm run build`
+* Displays the list of recipes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Recipe Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Search Function
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Users can search for recipes by keyword.
 
-### `npm run eject`
+2. Add Function
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Users can add a new recipe with the following details:
+    * Recipe Name
+    * Ingredients
+    * Instructions
+    * Category (e.g., Dessert, Main Course, Appetiser)
+    * Preparation Time
+    * Cooking Time
+    * Servings
+    * Image
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3.  Delete Function
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Users can delete existing recipes from the list.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Update Function
 
-## Learn More
+* Users can edit existing recipes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Recipe Categories
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Use categories to classify recipes (e.g., Breakfast, Lunch, Dinner).
 
-### Code Splitting
+### General Requirements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. CRUD Operations
 
-### Analyzing the Bundle Size
+* Implement Create, Read, Update, Delete operations for recipes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. JSON Server
 
-### Making a Progressive Web App
+* Use JSON server to store and manage recipe data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Endpoints
 
-### Advanced Configuration
+* Use a GET request to fetch all recipes.
+* Use a POST request to add a new recipe.
+* Use a DELETE request to remove an existing recipe.
+* Use a PATCH/PUT method to update a recipe.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Responsive Design
 
-### Deployment
+* Ensure the application is responsive and user-friendly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+5. User Authentication and Authorization
 
-### `npm run build` fails to minify
+* User authentication and authorization to protect user data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Getting Started
+
+
+### Installation
+
+1. Clone the repository:
+
+```
+    git clone https://github.com/ComfortN/recipe_app.git
+```
+2. Navigate to the project directory:
+
+```
+    cd recipe_app
+```
+
+3. Install dependencies:
+
+```
+    npm install
+```
+
+4. Start the JSON server:
+
+```
+    npm run json-server
+
+5. Start the React application:
+
+```
+    npm start
+```
+
+## Usage
+
+1. Login
+
+* Navigate to the login page and enter your credentials to log in.
+
+2. Register
+
+* Navigate to the registration page and fill in the required details to create a new account.
+
+3. Add Recipe
+
+* Navigate to the "Add Recipe" page and fill in the recipe details to add a new recipe.
+
+4. Edit Recipe
+
+* Click on an existing recipe and update the details to edit it.
+
+5. Delete Recipe
+
+* Click on the delete button next to a recipe to remove it from the list.
+
+6. Search Recipe
+
+* Use the search bar to find recipes by keyword.
