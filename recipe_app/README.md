@@ -100,6 +100,7 @@ The Online Recipe Application is a web-based platform built with ReactJS and JSO
 
 ```
     npm run json-server
+```
 
 5. Start the React application:
 
